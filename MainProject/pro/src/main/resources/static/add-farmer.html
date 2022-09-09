@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <script src="scriptv.js"></script>  
+</head>
+<style>
+    .Container {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .radioDiv {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .submitBtn {
+        display: flex;
+        padding: 25px;
+        justify-content: center;
+    }
+
+    .width {
+        width: 100%;
+    }
+
+    form {
+        width: 300px;
+        border: 2px solid;
+        padding: 20px;
+    }
+    body {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuOzjUuQ6Ux0UmMeWv_YlqJ3DvTbm3YvQB492AEarJ&s');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+label {
+  background-color: red;
+  color: black;
+  font-weight: bold;
+  padding: 4px;
+  text-transform: uppercase;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: xx-small;
+}
+.iro{
+	background-color: skyblue;
+  color: black;
+  font-weight: bold;
+  padding: 4px;
+  text-transform: uppercase;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: xx-small;
+}
+</style>
+
+<body>
+    <div class="Container">
+        
+        <form id="form" name="farmerForm" >
+            <h4 style="text-align: center;color: white;background-color: gray;">Best farm</h4>
+            <p style="text-align: center;">New farmer</p>
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="Name">
+                <div id="error" style="color: red;"></div>
+            </div>
+            <div class="mb-3">
+                <label for="Age" class="form-label">Age</label>
+                <input type="number" class="form-control" name="age" id="age">
+                <div id="error1" style="color: red;"></div>
+            </div>
+            <div  class="iro" id="gender">Gender</div>
+
+            <div class="radioDiv">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="gender" value="male">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="gender" value="female" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Female
+                    </label>
+                </div>
+                
+            </div>
+            <div id="error2" style="color: red;"></div>
+            
+        </form>
+        <div class="submitBtn">
+                <button  onclick="onFormSubmit() ;" class="btn btn-success width" >Add</button>
+            </div>
+        </div>
+			<div id="msg">
+			
+			</div>
+    </div>
+<script>
+async function onFormSubmit() {
+         
+           console.log(document.forms['farmerForm'].name.value);
+
+
+     let queryStr = "?name="+document.forms['farmerForm'].name.value+"&age="+document.forms['farmerForm'].age.value+"&gender="+document.forms['farmerForm'].gender.value;
+
+            await fetch('/farmers/addnewfarmer'+queryStr , {   
+                method: 'GET',
+                headers: { "Content-Type":'application/x-www-form-urlencoded'  },
+                //body: formData
+            })
+               .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    document.getElementById("msg").innerText = res.message;
+                    alert("message from backend"+res.message);
+                    
+                })
+                .catch(err =>  document.getElementById("msg").innerText ="failed to add farmer");
+                
+        }
+</script>
+</body>
+
+</html>

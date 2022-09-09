@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="/postrequest.js"></script>
+<script src="/getrequest.js"></script>
+<script src="scriptv.js"></script>
+</head>
+<body>
+	<div id="postResultDiv" align="center"></div>
+	<div class="container">
+		<h2>Best Farm</h2>
+		<form id="farmerForm">
+			<div class="form-group">
+				<label for="farmerName">Name:</label> <input type="text"
+					class="form-control" id="farmerName" placeholder="Enter Book Name"
+					name="name">
+			</div>
+			<div class="form-group">
+				<label for="age">Age :</label> <input type="number"
+					class="form-control" id="author" placeholder="Enter Age"
+					name="age">
+			</div>
+			 <div  class="Gender" id="gender">Gender
+			 </br>
+			<div class="Gender">
+                <div class="Gender">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="gender">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Male
+                    </label>
+                    </br>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="gender" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Female
+                    </label>
+                </div>
+                </br>
+                </br>
+			<button type="submit" class="btn btn-primary" onclick="loaddata()">Add</button>
+		</form>
+			</div>
+			<div id="mes">
+			
+			</div>
+		</div>
+		<script>
+		</script>
+		
+</body>
+</html>
